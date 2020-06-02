@@ -1,0 +1,6 @@
+31343046	Ivan Kevin	Berlot	true	28/11/1984	false	
+30868615	Julia Matilde	Ponti	false	7/4/1984	false	
+52396178	Draco Loreno	Berlot Ponti	true	20/4/2012	false	
+56999617	Clara Sakura	Berlot Ponti	false	9/5/2018	false	
+16714263	Pino	el Pe	true	11/10/1989	false	
+3363698	tito	Sore	false	22/12/1985	false	

@@ -1,0 +1,9 @@
+"0"|AA|cordoba|baires|"2.0"|Mañana|3/2/2019|false|"1000.5"|"300"|"180"|
+"1"|EA|California|Buenos Aires|"22.0"|Mañana|21/5/2019|true|"15320.04"|"300"|"110"|
+"2"|JpArlines|Buenos Aires|Moscu|"33.0"|Tarde|22/5/2019|true|"11225.00"|"200"|"190"|
+"3"|AerolineasArgentinas|camchatka|chile|"33.0"|Noche|25/1/2020|false|"1425.78"|"200"|"2"|
+"4"|AerolineasArgentinas|Mordor|Merlo|"22.0"|Noche|26/1/1948|false|"63592"|"300"|"15"|
+"55"|AA|el infierno|jamaika|"66.0"|Noche|21/5/1966|true|"125478.36"|"500"|"180"|
+"666"|AA|El infierno|la tierra|"66.0"|Mañana|28/11/1984|false|"1254"|"350"|"210"|
+"125"|JpArlines|Tokyo|Buenos Aires|"35.0"|Mañana|19/5/2019|false|"3652"|"300"|"80"|
+"323363"|EA|Port|Bue|"16.0"|Mañana|5/11/2020|true|"9658"|"500"|"320.0"|

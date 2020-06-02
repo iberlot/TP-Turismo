@@ -1,0 +1,43 @@
+@startuml
+class Clientes [[java:Modelo.Clientes]] {
+	-int ndoc
+	-String apellido
+	-String nombre
+	-Calendar fechaNac
+	-int sexo
+}
+class Menus [[java:Vista.Menus]] {
+	+void menu_inicio()
+}
+class CVuelos [[java:Controlador.CVuelos]] {
+	+Vuelos buscar_disponible(Calendar fecha, String destino, String partida, String categoria, int franjaHoraria, int cantidad)
+}
+class Vuelos [[java:Modelo.Vuelos]] {
+	-int numero
+	-String ciudadDestino
+	-String ciudadPartida
+	-ArrayList<Butacas> butacas
+	-float horasTardadas
+	-String franjaHoraSalida
+	-Calendar fecha
+}
+class Butacas [[java:Modelo.Butacas]] {
+	-int numero
+	-String ubicacion
+	-String categoria
+	-float precio
+	-boolean discap
+	-boolean disponible
+}
+class TP_05 [[java:tp_05.TP_05]] {
+	+{static}void main(String[] args)
+}
+class ClientesFrecuentes [[java:Modelo.ClientesFrecuentes]] {
+	-int puntos
+}
+Clientes <|-- ClientesFrecuentes
+class Pantallas [[java:Vista.Pantallas]] {
+	+void pre_venta()
+}
+
+@enduml

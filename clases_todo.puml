@@ -1,0 +1,423 @@
+@startuml
+class CPasajes [[java:Controlador.CPasajes]] {
+	+CPasajes(Pasajes modeloPasaje, VPasajes vistaPasaje)
+	+Clientes getCliente()
+	+void setCliente(Clientes cliente)
+	+Vuelos getVuelo()
+	+void setVuelo(Vuelos vuelo)
+	+Categorias getCat()
+	+void setCat(Categorias cat)
+	+void grabar()
+	+void mostrar()
+}
+class Pasajes [[java:Modelo.Pasajes]] {
+}
+CPasajes --> "1" Pasajes : modeloPasaje
+class VPasajes [[java:Vista.VPasajes]] {
+}
+CPasajes --> "1" VPasajes : vistaPasaje
+interface Icontroler [[java:Controlador.Icontroler]] {
+}
+Icontroler <|.. CPasajes
+class VVentas [[java:Vista.VVentas]] {
+	+void mostrarTotal(float total)
+	+void mostrarFormaPago(String fpago)
+	+int pedirNumVenta()
+	+String pedirFormaDePago()
+	+int pedirNdoc()
+	+int pedirCuotas()
+}
+class Menus [[java:Vista.Menus]] {
+	+{static}int menu_inicio()
+	+{static}int menu_vuelos()
+	+{static}int menu_clientes()
+	+{static}int menu_preventa()
+}
+class CVuelos [[java:Controlador.CVuelos]] {
+	+CVuelos(Vuelos modeloVuelos, VVuelos vistaVuelos)
+	+int getNumero()
+	+void setNumero()
+	+String getCiudadDestino()
+	+void setCiudadDestino()
+	+String getCiudadPartida()
+	+void setCiudadPartida()
+	+ArrayList<Categorias> getCat()
+	+void setCat(ArrayList<Categorias> cat)
+	+float getHorasDeViaje()
+	+void setHorasDeViaje()
+	+String getFranjaHoraria()
+	+void setFranjaHoraria()
+	+Calendar getFecha()
+	+void setFecha()
+	+void grabar()
+	+void mostrar()
+}
+class Vuelos [[java:Modelo.Vuelos]] {
+}
+CVuelos --> "1" Vuelos : modeloVuelos
+class VVuelos [[java:Vista.VVuelos]] {
+}
+CVuelos --> "1" VVuelos : vistaVuelos
+interface Icontroler [[java:Controlador.Icontroler]] {
+}
+Icontroler <|.. CVuelos
+class Categorias [[java:Modelo.Categorias]] {
+	-int numero
+	-String categoria
+	-float precio
+	-boolean discap
+	-int cantDisponibles
+	+Categorias(int numero, String categoria, float precio, boolean discap, int cantDisponibles)
+	+Categorias()
+	+int getNumero()
+	+void setNumero(int numero)
+	+String getCategoria()
+	+void setCategoria(String categoria)
+	+float getPrecio()
+	+void setPrecio(float precio)
+	+boolean isDiscap()
+	+void setDiscap(boolean discap)
+	+int getCantDisponibles()
+	+void setCantDisponibles(int cantDisponibles)
+}
+class daoCategorias [[java:Modelo.DAO.daoCategorias]] {
+	-{static}String ARCHIVO
+	+void cargar_archivo(Categorias categoria)
+	+Categorias conv_a_objeto(String[] datos)
+	+ArrayList<Categorias> recuperar_datos_archivo()
+}
+interface "Idao<Categorias>" as Idao_Categorias_ {
+}
+Idao_Categorias_ <|.. daoCategorias
+class CCategorias [[java:Controlador.CCategorias]] {
+	+CCategorias(Categorias modeloCategoria, VCategorias vistaCategoria)
+	+int getNumero()
+	+void setNumero(int numero)
+	+String getCategoria()
+	+void setCategoria(String categoria)
+	+float getPrecio()
+	+void setPrecio(float precio)
+	+boolean isDiscap()
+	+void setDiscap(boolean discap)
+	+int getCantDisponibles()
+	+void setCantDisponibles(int cantDisponibles)
+	+void setNumero()
+	+void setCategoria()
+	+void setPrecio()
+	+void setDiscap()
+	+void setCantDisponibles()
+	+void restarAsiento()
+	+void grabar()
+	+void mostrar()
+}
+class Categorias [[java:Modelo.Categorias]] {
+}
+CCategorias --> "1" Categorias : modeloCategoria
+class VCategorias [[java:Vista.VCategorias]] {
+}
+CCategorias --> "1" VCategorias : vistaCategoria
+interface Icontroler [[java:Controlador.Icontroler]] {
+}
+Icontroler <|.. CCategorias
+class daoVuelos [[java:Modelo.DAO.daoVuelos]] {
+	-String ARCHIVO
+	-String ARCHCATXVUELO
+	-{static}int[] ANCHO
+	+void cargar_archivo(Vuelos vuelo)
+	+Vuelos conv_a_objeto(String[] datos)
+	+ArrayList<Vuelos> recuperar_datos_archivo()
+	+Categorias buscar_categoria_id(ArrayList<Categorias> categorias, int id)
+}
+interface "Idao<Vuelos>" as Idao_Vuelos_ {
+}
+Idao_Vuelos_ <|.. daoVuelos
+class Vuelos [[java:Modelo.Vuelos]] {
+	-{static}int SIGUIENTE_NUMERO
+	-int numero
+	-String ciudadDestino
+	-String ciudadPartida
+	-ArrayList<Categorias> cat
+	-float horasDeViaje
+	-String franjaHoraria
+	-Calendar fecha
+	+Vuelos(int numero, Calendar fecha, String ciudadPartida, String ciudadDestino, float horasDeViaje, String franjaHoraria)
+	+Vuelos()
+	+int getNumero()
+	+void setNumero(int numero)
+	+String getCiudadDestino()
+	+void setCiudadDestino(String ciudadDestino)
+	+String getCiudadPartida()
+	+void setCiudadPartida(String ciudadPartida)
+	+ArrayList<Categorias> getCat()
+	+void setCat(ArrayList<Categorias> cat)
+	+float getHorasDeViaje()
+	+void setHorasDeViaje(float horasDeViaje)
+	+String getFranjaHoraria()
+	+void setFranjaHoraria(String franjaHoraria)
+	+Calendar getFecha()
+	+void setFecha(Calendar fecha)
+	+{static}int getSIGUIENTE_NUMERO()
+	+{static}void setSIGUIENTE_NUMERO(int sIGUIENTE_NUMERO)
+	+{static}int suma_SIGUIENTE_NUMERO()
+}
+class CPrincipal [[java:Controlador.CPrincipal]] {
+	-ArrayList<Clientes> clientes
+	-ArrayList<Vuelos> vuelos
+	-ArrayList<Ventas> ventas
+	-String OPERADOR
+	+void inicializar_archivos()
+	+void inicio()
+	+void abm_Vuelos()
+	-Vuelos nuevoVuelo()
+	+void nuevaCategoria(CVuelos controlerVuelo)
+	+void abm_Clientes()
+	+void abm_Preventa()
+	-void mostrarCliente(Clientes cliente)
+	-Clientes nuevoCliente()
+	+Ventas nuevaVenta()
+	+int buscarVuelo(Calendar fecha, String ciudadPartida, String ciudadDestino, String franja)
+	+int ofreceOtroHorarioVuelo(Calendar fecha, String ciudadPartida, String ciudadDestino, String franja)
+	+int buscarCategoria(Vuelos vue, String categoria, int cantidadPasajes)
+	+int ofrecerOtraCategoria(Vuelos vue, String categoria, int cantidadPasajes)
+	+int buscarCliente(int dni)
+	+String getOPERADOR()
+	+void setOPERADOR(String oPERADOR)
+}
+class VPasajes [[java:Vista.VPasajes]] {
+	+void mostrarInfo(String origen, String destino, int numVuelo, Calendar fecha, String franja, String categoria, String nombre, String apellido, int dni, boolean discap)
+}
+interface Icontroler [[java:Controlador.Icontroler]] {
+	void grabar()
+	void mostrar()
+}
+class Clientes [[java:Modelo.Clientes]] {
+	-int ndoc
+	-String apellido
+	-String nombre
+	-Calendar fechaNac
+	-boolean sexo
+	-boolean clienteFrecuente
+	-int puntos
+	+Clientes(int ndoc, String apellido, String nombre, Calendar fechaNac, boolean sexo, boolean clienteFrecuente, int puntos)
+	+Clientes(int ndoc, String apellido, String nombre, Calendar fechaNac, boolean sexo, boolean clienteFrecuente)
+	+Clientes()
+	+int getNdoc()
+	+void setNdoc(int ndoc)
+	+String getApellido()
+	+void setApellido(String apellido)
+	+String getNombre()
+	+void setNombre(String nombre)
+	+Calendar getFechaNac()
+	+void setFechaNac(Calendar fechaNac)
+	+boolean getSexo()
+	+void setSexo(boolean sexo)
+	+boolean getClienteFrecuente()
+	+void isClienteFrecuente(boolean clienteFrecuente2)
+	+int getPuntos()
+	+void setPuntos(int puntos)
+}
+class daoClientes [[java:Modelo.DAO.daoClientes]] {
+	-String ARCHIVO
+	+void cargar_archivo(Clientes cliente)
+	+Clientes conv_a_objeto(String[] datos)
+	+ArrayList<Clientes> recuperar_datos_archivo()
+}
+interface "Idao<Clientes>" as Idao_Clientes_ {
+}
+Idao_Clientes_ <|.. daoClientes
+class VVuelos [[java:Vista.VVuelos]] {
+	+void mostrarNumPrecHoras(int num, float precio, float horasDeViaje)
+	+void mostrarNum(int num)
+	+void mostrarFranjaHorario(String franja)
+	+void mostrarCiudadDestino(String destino)
+	+void mostrarCiudadPartida(String partida)
+	+void mostrarFechaPartida(Calendar fecha)
+	+int pedirNumero()
+	+String pedirCiudadDestino()
+	+String pedirCiudadPartida()
+	+float pedirHorasDeViaje()
+	+String pedirFranjaHoraria()
+	+Calendar pedirFecha()
+	+void mostrarDatosVuelo(int numero, String ciudadPartida, String ciudadDestino, Calendar fecha, String franja, float horasDeViaje)
+}
+class CClientes [[java:Controlador.CClientes]] {
+	+CClientes(Clientes modeloCliente, VClientes vistaCliente)
+	+Clientes getCliente()
+	+int getNdoc()
+	+void setNdoc(int ndoc)
+	+String getApellido()
+	+void setApellido()
+	+void setApellido(String apellido)
+	+String getNombre()
+	+void setNombre(String nombre)
+	+Calendar getFechaNac()
+	+void setFechaNac(Calendar fechaNac)
+	+boolean getSexo()
+	+void setSexo(boolean sexo)
+	+boolean getClienteFrecuente()
+	+void setClienteFrecuente(boolean clienteFrecuente)
+	+int getPuntos()
+	+void setPuntos(int puntos)
+	+void setPuntos()
+	+void calcularSumarPuntos(float monto)
+	+void setNDoc()
+	+void setNombre()
+	+void setSexo()
+	+void setFechaNac()
+	+void grabar()
+	+void mostrar()
+}
+class Clientes [[java:Modelo.Clientes]] {
+}
+CClientes --> "1" Clientes : modeloCliente
+class VClientes [[java:Vista.VClientes]] {
+}
+CClientes --> "1" VClientes : vistaCliente
+interface Icontroler [[java:Controlador.Icontroler]] {
+}
+Icontroler <|.. CClientes
+interface "Idao<T>" as Idao_T_ [[java:Modelo.DAO.Idao]] {
+	String ARCHIVO
+	void cargar_archivo(T dato)
+	T conv_a_objeto(String[] datos)
+	ArrayList<T> recuperar_datos_archivo()
+}
+class CVentas [[java:Controlador.CVentas]] {
+	+CVentas(Ventas modeloVentas, VVentas vistaVentas)
+	+void setIdVenta(int id)
+	+int getIdVenta()
+	+float calcularTotal()
+	+void mostrarTotal()
+	+boolean equals(Object obj)
+	+ArrayList<Pasajes> getPasajes()
+	+void setPasajes(ArrayList<Pasajes> pasajes)
+	+Calendar getFecha()
+	+void setFecha(Calendar fecha)
+	+String getOperador()
+	+String getFormaPago()
+	+void setOperador(String operador)
+	+void setFormaPago(String fPago)
+	+void setFormaPago()
+	+void grabar()
+	+void mostrar()
+	+void calcular_total_pago()
+}
+class Ventas [[java:Modelo.Ventas]] {
+}
+CVentas --> "1" Ventas : modeloVentas
+class VVentas [[java:Vista.VVentas]] {
+}
+CVentas --> "1" VVentas : vistaVentas
+interface Icontroler [[java:Controlador.Icontroler]] {
+}
+Icontroler <|.. CVentas
+class daoVentas [[java:Modelo.DAO.daoVentas]] {
+	-{static}String ARCHIVO
+	-{static}String ARCHPASAJESXVENTA
+	-{static}int[] ANCHO
+	+void cargar_archivo(Ventas venta)
+	+Ventas conv_a_objeto(String[] datos)
+	+ArrayList<Ventas> recuperar_datos_archivo()
+	-Pasajes buscar_pasaje_id(ArrayList<Pasajes> pasajes, int vuelo, int doc)
+	+void actualizar_puntos(Ventas venta)
+}
+interface "Idao<Ventas>" as Idao_Ventas_ {
+}
+Idao_Ventas_ <|.. daoVentas
+class VCategorias [[java:Vista.VCategorias]] {
+	+void mostrarNumTipo(int num, String tipo)
+	+void mostrarPrecio(float precio)
+	+void mostrarAsientoDiscap(boolean discap)
+	+void mostrarDisponibles(int dispo)
+	+int pedirNumero()
+	+String pedirCategoria()
+	+float pedirPrecio()
+	+boolean pedirDiscap()
+	+int pedirCantDisponibles()
+	+int pedirCantidadPasajes()
+}
+class Ventas [[java:Modelo.Ventas]] {
+	-{static}int SIGUIENTE_ID
+	-{static}int INTERES_ANUAL
+	-{static}int DESCUENTO_CLIENTE
+	-int idVenta
+	-Calendar fecha
+	-String operador
+	-ArrayList<Pasajes> pasajes
+	-String formaPago
+	+Ventas(int id, Calendar fec, String op, String fPago)
+	+Ventas()
+	+ArrayList<Pasajes> getPasajes()
+	+void setPasajes(ArrayList<Pasajes> pasajes)
+	+void setPasaje(Clientes cli, Vuelos vue, Categorias cat)
+	+Calendar getFecha()
+	+void setFecha(Calendar fecha)
+	+int getIdVenta()
+	+void setIdVenta(int idVenta)
+	+String getOperador()
+	+void setOperador(String operador)
+	+float calcularTotal()
+	+String getFormaPago()
+	+void setFormaPago(String fPago)
+	+{static}int getSIGUIENTE_ID()
+	+{static}void setSIGUIENTE_ID(int numero)
+	+{static}int suma_SIGUIENTE_ID()
+	+{static}int getINTERES_ANUAL()
+	+{static}void setINTERES_ANUAL(int iNTERES_ANUAL)
+	+{static}int getDESCUENTO_CLIENTE()
+	+{static}void setDESCUENTO_CLIENTE(int dESCUENTO_CLIENTE)
+}
+class TP_05 [[java:tp_05.TP_05]] {
+	+{static}void main(String[] args)
+}
+class Pasajes [[java:Modelo.Pasajes]] {
+	+Pasajes(Clientes cli, Vuelos vue, Categorias cate)
+	+String toString()
+	+Clientes getCliente()
+	+void setCliente(Clientes cliente)
+	+Vuelos getVuelo()
+	+void setVuelo(Vuelos vuelo)
+	+Categorias getCat()
+	+void setCat(Categorias cat)
+}
+class Clientes [[java:Modelo.Clientes]] {
+}
+Pasajes --> "1" Clientes : cliente
+class Vuelos [[java:Modelo.Vuelos]] {
+}
+Pasajes --> "1" Vuelos : vuelo
+class Categorias [[java:Modelo.Categorias]] {
+}
+Pasajes --> "1" Categorias : cat
+class VClientes [[java:Vista.VClientes]] {
+	+void mostrarNombreNacSexo(String apellido, String nombre, Calendar fechaNac, boolean sexo)
+	+void mostrarNombreApe(String apellido, String nombre)
+	+void mostrarDNI(int ndoc)
+	+String pedirApellido()
+	+int pedirNdoc()
+	+String pedirNombre()
+	+Calendar pedirFechaNac()
+	+boolean pedirSexo()
+	+int pedirPuntos()
+}
+class daoPasajesVendidos [[java:Modelo.DAO.daoPasajesVendidos]] {
+	-{static}String ARCHIVO
+	+void cargar_archivo(Pasajes pasaje, int idVenta)
+	+void cargar_archivo(Pasajes dato)
+	+Pasajes conv_a_objeto(String[] datos)
+	+ArrayList<Pasajes> recuperar_datos_archivo()
+}
+interface "Idao<Pasajes>" as Idao_Pasajes_ {
+}
+Idao_Pasajes_ <|.. daoPasajesVendidos
+class Pantallas [[java:Vista.Pantallas]] {
+	+void pre_venta()
+	+void datos_vuelo()
+	+void cambiar_datos_vuelos()
+	+void ingrese_documento()
+	+void pedir_datos_cliente(int documento)
+	+{static}boolean pedirConfirmacionAlta(String dato)
+	+{static}void mensajes(int codigo)
+}
+
+@enduml

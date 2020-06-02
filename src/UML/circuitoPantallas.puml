@@ -1,0 +1,183 @@
+@startuml
+(*) --> "
+{{
+    salt
+    {+
+        <b>Pre-venta
+        Ingrese los datos
+        fecha | "            "
+        Ciudad de salida | "            "
+        Ciudad de destino | "            "
+        Categoria | ^Categorias^
+        Franja horaria | ^Horarios^
+        Cantidad | ^1^
+        [ok]
+    }
+}}
+" as preVenta
+ 
+preVenta -down-> "
+buscaPasaje()" as func1
+
+func1 -right-> [No] "
+{{
+salt
+    {+
+        <b>Desea cambiar
+        (X) Categoria | () Franja horaria
+        {[Ok]|[Cancel]}
+    }
+}}
+" as Cambio
+
+Cambio -up-> preVenta
+
+func1 -left-> [Si] "
+{{
+    salt
+    {+
+        <b>Datos vuelo
+        Numero de vuelo | "    xxxx "
+        Cantidad de horas | "    xx:xx"
+        Precio | "$  Precio"
+        [ok]
+    }
+}}
+" as vuelo
+ 
+vuelo -down-> "
+{{
+    salt
+    {+
+        <b>Ingrese Num doc
+        Documento: | "            "
+        [ok]
+    }
+}}
+" as bNumDoc
+
+
+bNumDoc -down-> "
+buscaCliente()" as func2
+
+
+
+func2 --> [Si]"
+{{
+    salt
+    {+
+        <b>Datos cliente
+        <i>Nombre
+        <i>Fecha nac
+        <i>Sexo
+        [ok]
+    }
+}}
+" as mostrarCliente
+
+
+func2 --> [No]"
+{{
+    salt
+    {+
+        <b>Cargar cliente
+        <i>Documento
+        Nombre: | "            "
+        Fecha nac: | "            "
+        Sexo: | "            "
+        [ok]
+    }
+}}
+" as agregarCliente
+
+agregarCliente -down-> mostrarCliente
+
+
+
+mostrarCliente --> "
+{{
+    salt
+    {+
+        <b>Asientos diferenciales
+        Requiere de asientos para
+        personas con mobilidad reducida?
+        {[Si]|[No]}
+    }
+}}
+" as diferenciales
+
+ --> "
+{{
+    salt
+    {+
+        <b>Total a pagar
+        Importe:| "$  Precio"
+        [Ok]
+    }
+}}
+" 
+
+ --> "
+{{
+    salt
+    {+
+        <b>Medios de pago
+        Seleccione el medio de pago
+        {(X) Efectivo | () Tarjeta}
+        [Ok]
+    }
+}}
+" 
+
+--> calcularMontos()
+--> calcularPuntos()
+
+--> "
+{{
+    salt
+    {+
+        <b>Consulta
+        Desea usar puntos en el pago?
+        {[Si]|[No]}
+    }
+}}
+" as usarPuntos
+
+
+usarPuntos --> [Si]"
+{{
+    salt
+    {+
+        <b>Usar puntos
+        Tiene un total de: xxxx puntos
+        {Cuantos desea usar: | "            "}
+        [ok]
+    }
+}}
+" as usarPun
+
+usarPuntos --> [No]"
+{{
+    salt
+    {+
+        <b>Pasajes
+        Origen: | "            "
+        Destino: | "            "
+		Numero de vuelo: | "            "
+		Fecha de partida: | "            " 
+		Franja horaria: | "            " 
+		Categoría: | "            " 
+		Nombre: | "            " 
+		Documento: | "            "
+		Asiento especial: | "            "
+        [ok]
+    }
+}}
+" as imprPasaje
+
+usarPun --> imprPasaje
+
+
+-->(*)
+
+@enduml

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="TP_05">
+  <ClassDiagramComponents>
+    <Class name="Categorias" package="Modelo" visibility="public" xPosition="32.0" yPosition="167.0">
+      <Fields>
+        <Field name="numero" type="int" visibility="private"/>
+        <Field name="categoria" type="String" visibility="private"/>
+        <Field name="precio" type="float" visibility="private"/>
+        <Field name="discap" type="boolean" visibility="private"/>
+        <Field name="cantDisponibles" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="untitledMethod" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Vuelos" package="Modelo" visibility="public" xPosition="281.0" yPosition="167.0">
+      <Fields>
+        <Field name="numero" type="int" visibility="private"/>
+        <Field name="ciudadDestino" type="String" visibility="private"/>
+        <Field name="ciudadPartida" type="String" visibility="private"/>
+        <Field name="cat" type="Categorias[]" visibility="private"/>
+        <Field name="horasTardadas" type="float" visibility="private"/>
+        <Field name="franjaHoraSalida" type="String" visibility="private"/>
+        <Field name="fecha" type="Calendar" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Clientes" package="Modelo" visibility="public" xPosition="491.0" yPosition="431.0">
+      <Fields>
+        <Field name="ndoc" type="int" visibility="protected"/>
+        <Field name="apellido" type="String" visibility="protected"/>
+        <Field name="nombre" type="String" visibility="protected"/>
+        <Field name="fechaNac" type="Calendar" visibility="protected"/>
+        <Field name="sexo" type="int" visibility="protected"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="ClientesFrecuentes" package="Modelo" visibility="public" xPosition="711.0" yPosition="440.0">
+      <Fields>
+        <Field name="puntos" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Menus" package="Vista" visibility="public" xPosition="789.0" yPosition="45.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="menu_inicio" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Pasajes" package="Modelo" visibility="public" xPosition="553.0" yPosition="224.0">
+      <Fields>
+        <Field name="cliente" type="Clientes" visibility="private"/>
+        <Field name="vuelo" type="Vuelos" visibility="private"/>
+        <Field name="cat" type="Categorias" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="untitledMethod" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Ventas" package="Modelo" visibility="public" xPosition="527.0" yPosition="60.0">
+      <Fields>
+        <Field name="pasajes" type="ArrayList&lt;Pasajes&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="CVentas" package="Controlador" visibility="public" xPosition="845.0" yPosition="285.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="butacas" source="Modelo.Vuelos" target="Modelo.Categorias" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <UseRelation name="cliente" source="Modelo.Pasajes" target="Modelo.Clientes" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="vuelo" source="Modelo.Pasajes" target="Modelo.Vuelos" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Modelo.ClientesFrecuentes" target="Modelo.Clientes"/>
+    <UseRelation name="pasajes" source="Modelo.Ventas" target="Modelo.Pasajes" sourceCardinality="1..*" targetCardinality="1..*"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

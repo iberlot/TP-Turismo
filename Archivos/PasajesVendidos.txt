@@ -1,0 +1,10 @@
+0;125;Turista;Ivan Kevin;Berlot;31343046;false;
+0;125;Turista;Julia Matilde;Ponti;30868615;false;
+0;125;Turista;Draco Loreno;Berlot Ponti;52396178;false;
+0;125;Turista;Clara Sakura;Berlot Ponti;56999617;false;
+0;1;null;Ivan Kevin;Berlot;31343046;null;
+0;1;null;Julia Matilde;Ponti;30868615;null;
+0;0;null;Julia Matilde;Ponti;30868615;null;
+0;0;null;Ivan Kevin;Berlot;31343046;null;
+0;1;null;Ivan Kevin;Berlot;31343046;null;
+0;1;null;Julia Matilde;Ponti;30868615;null;
