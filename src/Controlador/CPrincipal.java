@@ -28,7 +28,6 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Scanner;
 
-import Modelo.Categorias;
 import Modelo.Pasajeros;
 import Modelo.Pasajes;
 import Modelo.Reservas;
@@ -38,7 +37,6 @@ import Modelo.DAO.daoReservas;
 import Modelo.DAO.daoVuelos;
 import Vista.Menus;
 import Vista.Pantallas;
-import Vista.VCategorias;
 import Vista.VPasajeros;
 import Vista.VPasajes;
 import Vista.VReservas;
@@ -53,7 +51,7 @@ public class CPrincipal {
 
 	/**
 	 * Listados de los Pasajeros registrados en el sistema.
-	 * 
+	 *
 	 * @var ArrayList<Pasajeros> Pasajeros
 	 */
 	private ArrayList<Pasajeros> pasajeros = new ArrayList<Pasajeros>();

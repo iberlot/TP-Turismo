@@ -1,6 +1,5 @@
 package Controlador;
 
-import Modelo.Categorias;
 import Modelo.Pasajeros;
 import Modelo.Pasajes;
 import Modelo.Vuelos;
@@ -39,7 +38,7 @@ public class CPasajes implements Icontroler {
 	}
 
 	public void setPreferencial(boolean preferencial) {
-		modeloPasaje.setPreferencial(preferencial);;
+		modeloPasaje.setPreferencial(preferencial);
 	}
 
 	public boolean getMasEquipaje() {
@@ -49,7 +48,7 @@ public class CPasajes implements Icontroler {
 	public void setMasEquipaje(boolean masEquipaje) {
 		modeloPasaje.setMasEquipaje(masEquipaje);
 	}
-	
+
 	@Override
 	public void grabar() throws Exception {
 		daoPasajesVendidos dao = new daoPasajesVendidos();
@@ -60,18 +59,11 @@ public class CPasajes implements Icontroler {
 
 	@Override
 	public void mostrar() {
-		vistaPasaje.mostrarInfo(
-				modeloPasaje.getVuelo().getNumero(),
-				modeloPasaje.getVuelo().getCompaniaAerea(),
-				modeloPasaje.getVuelo().getCiudadPartida(), 
-				modeloPasaje.getVuelo().getCiudadDestino(), 
-				modeloPasaje.getVuelo().getFecha(), 
-				modeloPasaje.getVuelo().getFranjaHoraria(),  
-				modeloPasaje.getCliente().getNombre(), 
-				modeloPasaje.getCliente().getApellido(), 
-				modeloPasaje.getCliente().getNdoc(), 
-				modeloPasaje.isMasEquipaje(), 
-				modeloPasaje.isPreferencial());
+		vistaPasaje.mostrarInfo(modeloPasaje.getVuelo().getNumero(), modeloPasaje.getVuelo().getCompaniaAerea(),
+				modeloPasaje.getVuelo().getCiudadPartida(), modeloPasaje.getVuelo().getCiudadDestino(),
+				modeloPasaje.getVuelo().getFecha(), modeloPasaje.getVuelo().getFranjaHoraria(),
+				modeloPasaje.getCliente().getNombre(), modeloPasaje.getCliente().getApellido(),
+				modeloPasaje.getCliente().getNdoc(), modeloPasaje.isMasEquipaje(), modeloPasaje.isPreferencial());
 	}
 
 }

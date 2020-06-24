@@ -21,10 +21,8 @@
 
 package Controlador;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
-import Modelo.Categorias;
 import Modelo.Vuelos;
 import Modelo.DAO.daoVuelos;
 import Vista.VVuelos;
@@ -90,12 +88,16 @@ public class CVuelos implements Icontroler {
 	public void setFecha() {
 		modeloVuelos.setFecha(vistaVuelos.pedirFecha());
 	}
-public float getPrecio() {
-	return modeloVuelos.getPrecio();
-}
+
+	public float getPrecio() {
+		return modeloVuelos.getPrecio();
+	}
+
 	public void setPrecio() {
 		modeloVuelos.setPrecio(vistaVuelos.pedirPrecio());
 	}
+
+	@Override
 	public void grabar() throws Exception {
 
 		daoVuelos dao = new daoVuelos();
@@ -103,10 +105,11 @@ public float getPrecio() {
 		dao.cargar_archivo(modeloVuelos);
 	}
 
+	@Override
 	public void mostrar() {
 		vistaVuelos.mostrarDatosVuelo(getNumero(), getCompania(), getPrecio(), getHorasDeViaje());
 	}
-	
+
 	public void setCompania() {
 		modeloVuelos.setCompaniaAerea(vistaVuelos.pedirCompania());
 	}
@@ -114,7 +117,6 @@ public float getPrecio() {
 	public String getCompania() {
 		return modeloVuelos.getCompaniaAerea();
 	}
-	
 
 	public void restarAsiento() {
 		modeloVuelos.setCantDisponibles((modeloVuelos.getCantDisponibles()) - 1);
